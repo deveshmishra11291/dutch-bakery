@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dutch Pastry | Artisan Bakery Since 1896</title>
+
+<!-- SEO Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Dutch Pastry Artisan Bakery",
+  "foundingDate": "1896",
+  "description": "Fourth-generation Dutch artisan bakery specializing in Bavarian Crème Cakes, Vlaai, and Speculaas Cookies",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Bakery Products"
+  },
+  "potentialAction": {
+    "@type": "OrderAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "#order",
+      "inLanguage": "en-US"
+    },
+    "deliveryMethod": ["http://purl.org/goodrelations/v1#PickUp", "http://purl.org/goodrelations/v1#DeliveryModeDirectDownload"]
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream: #FFFDD0;
+    --cream-dark: #F5F0C0;
+    --cream-deeper: #EDE8B0;
+    --sage: #4A5C4E;
+    --sage-light: #6B7F6E;
+    --sage-dark: #2E3B30;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E9C8;
+    --brown: #3D2B1F;
+    --warm-white: #FEFCF5;
+    --text-dark: #1A1208;
+    --text-mid: #4A3728;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--cream-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 1.2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255, 253, 208, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: all 0.4s;
+  }
+  nav.scrolled {
+    padding: 0.8rem 4rem;
+    background: rgba(255, 253, 208, 0.98);
+    box-shadow: 0 4px 30px rgba(61,43,31,0.08);
+  }
+  .nav-logo {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+    text-decoration: none;
+  }
+  .nav-logo-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--sage-dark); letter-spacing: 0.04em;
+  }
+  .nav-logo-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem; font-weight: 300;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--text-mid);
+    position: relative; transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; right: 100%;
+    height: 1px; background: var(--gold);
+    transition: right 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--sage-dark); }
+  .nav-links a:hover::after { right: 0; }
+  .nav-cta {
+    background: var(--sage-dark); color: var(--cream) !important;
+    padding: 0.65rem 1.6rem; border-radius: 0;
+    letter-spacing: 0.15em !important;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--brown) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    position: relative; overflow: hidden;
+    background: linear-gradient(165deg, var(--sage-dark) 0%, #1A2B1E 40%, #0D1810 100%);
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 30% 50%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 70% 30%, rgba(107,127,110,0.15) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 0 2rem;
+    animation: heroReveal 1.4s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem; font-style: italic; font-weight: 300;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+    animation: heroReveal 1.4s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    font-weight: 700; line-height: 0.95;
+    color: var(--cream);
+    margin-bottom: 0.3em;
+    animation: heroReveal 1.4s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gold-light);
+    display: block;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 300; font-style: italic;
+    color: rgba(255,253,208,0.75);
+    margin-bottom: 3rem; max-width: 560px; margin-left: auto; margin-right: auto;
+    animation: heroReveal 1.4s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .hero-actions {
+    display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+    animation: heroReveal 1.4s 0.4s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .btn-primary {
+    padding: 1rem 2.8rem;
+    background: var(--gold);
+    color: var(--brown);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; text-decoration: none;
+    border: none; cursor: pointer;
+    transition: all 0.3s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.3); }
+  .btn-outline {
+    padding: 1rem 2.8rem;
+    background: transparent;
+    color: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; text-decoration: none;
+    border: 1px solid rgba(255,253,208,0.4); cursor: pointer;
+    transition: all 0.3s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+  .hero-badge {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 2rem;
+    animation: heroReveal 1.4s 0.6s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .hero-badge-item {
+    display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
+  }
+  .hero-badge-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700; color: var(--gold);
+    line-height: 1;
+  }
+  .hero-badge-label {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: rgba(255,253,208,0.5);
+  }
+  .hero-badge-sep { width: 1px; height: 40px; background: rgba(201,168,76,0.3); }
+  .scroll-indicator {
+    position: absolute; bottom: 2rem; right: 3rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(255,253,208,0.4);
+    animation: heroReveal 1.4s 0.8s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.2); }
+  }
+
+  /* ── DAILY BATCH STATUS ── */
+  .daily-batch {
+    background: var(--sage-dark);
+    padding: 1.2rem 4rem;
+    display: flex; align-items: center; justify-content: center; gap: 3rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  .batch-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .batch-items {
+    display: flex; gap: 2.5rem;
+  }
+  .batch-item {
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .batch-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .batch-dot.fresh { background: #6DCF79; }
+  .batch-dot.limited { background: var(--gold); }
+  .batch-dot.sold-out { background: #888; animation: none; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.4); }
+  }
+  .batch-name {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;
+    color: rgba(255,253,208,0.8);
+  }
+  .batch-status {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .batch-status.fresh { color: #6DCF79; }
+  .batch-status.limited { color: var(--gold); }
+  .batch-status.sold-out { color: #888; }
+
+  /* ── SECTION BASICS ── */
+  section { padding: 7rem 4rem; }
+  .section-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem; font-style: italic; font-weight: 300;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700; line-height: 1.1;
+    color: var(--sage-dark);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-lead {
+    font-size: 0.95rem; line-height: 1.8; font-weight: 300;
+    color: var(--text-mid); max-width: 600px;
+  }
+  .gold-line {
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    margin: 1.5rem 0;
+  }
+
+  /* ── LEGACY TIMELINE ── */
+  #legacy {
+    background: var(--warm-white);
+    position: relative; overflow: hidden;
+  }
+  #legacy::before {
+    content: '"';
+    position: absolute; top: -2rem; left: -1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 30rem; font-weight: 700;
+    color: rgba(74,92,78,0.04); line-height: 1;
+    pointer-events: none;
+  }
+  .legacy-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center; max-width: 1200px; margin: 0 auto;
+  }
+  .timeline {
+    position: relative; padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 1rem; bottom: 1rem;
+    width: 1px; background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .timeline-item {
+    position: relative; padding: 0 0 3rem 2rem;
+    opacity: 0; transform: translateX(-20px);
+    transition: all 0.6s ease;
+  }
+  .timeline-item.visible { opacity: 1; transform: translateX(0); }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -2rem; top: 0.4rem;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+  }
+  .timeline-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--gold); margin-bottom: 0.3rem;
+  }
+  .timeline-desc {
+    font-size: 0.88rem; line-height: 1.7; color: var(--text-mid);
+    font-weight: 300;
+  }
+  .legacy-visual {
+    position: relative;
+  }
+  .legacy-photo-frame {
+    position: relative;
+    padding: 1.5rem;
+    background: var(--cream-dark);
+  }
+  .legacy-photo-frame::before {
+    content: '';
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(201,168,76,0.4);
+    pointer-events: none; z-index: 1;
+  }
+  .legacy-photo {
+    width: 100%; aspect-ratio: 4/5;
+    background: linear-gradient(145deg, #4A5C4E, #2E3B30);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1rem;
+    color: rgba(255,253,208,0.5);
+  }
+  .legacy-photo-icon { font-size: 4rem; }
+  .legacy-photo-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-style: italic;
+    text-align: center; padding: 0 2rem;
+    line-height: 1.6;
+  }
+  .generation-badge {
+    position: absolute; bottom: -1.5rem; right: 1.5rem;
+    background: var(--gold);
+    padding: 1rem 1.5rem;
+    text-align: center;
+  }
+  .generation-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--brown); line-height: 1;
+  }
+  .generation-label {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--brown);
+  }
+
+  /* ── COLLECTION ── */
+  #collection {
+    background: var(--sage-dark);
+    color: var(--cream);
+  }
+  #collection .section-title { color: var(--cream); }
+  #collection .section-lead { color: rgba(255,253,208,0.65); }
+  .collection-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 4rem;
+  }
+  .collection-card {
+    position: relative; overflow: hidden;
+    aspect-ratio: 3/4; cursor: pointer;
+    background: var(--sage);
+  }
+  .card-bg {
+    position: absolute; inset: 0;
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .collection-card:hover .card-bg { transform: scale(1.08); }
+  .card-bg-1 {
+    background: linear-gradient(160deg, #6B5030 0%, #3D2010 60%, #1A0D05 100%);
+  }
+  .card-bg-2 {
+    background: linear-gradient(160deg, #4A6040 0%, #2A4020 60%, #1A2B10 100%);
+  }
+  .card-bg-3 {
+    background: linear-gradient(160deg, #5A4838 0%, #3A2818 60%, #201008 100%);
+  }
+  .card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+  }
+  .card-texture {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8rem; opacity: 0.15;
+  }
+  .card-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 2.5rem 2rem;
+    transform: translateY(20px); transition: transform 0.5s ease;
+  }
+  .collection-card:hover .card-content { transform: translateY(0); }
+  .card-tag {
+    display: inline-block;
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700; color: var(--cream);
+    line-height: 1.1; margin-bottom: 0.8rem;
+  }
+  .card-desc {
+    font-size: 0.82rem; font-weight: 300; line-height: 1.6;
+    color: rgba(255,253,208,0.7);
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.4s ease;
+    opacity: 0;
+  }
+  .collection-card:hover .card-desc { max-height: 100px; opacity: 1; }
+  .card-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--gold);
+    margin-top: 0.8rem;
+  }
+  .card-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    margin-top: 1rem;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--cream); transition: color 0.3s;
+  }
+  .card-btn:hover { color: var(--gold); }
+  .card-btn::after {
+    content: '→'; transition: transform 0.3s;
+  }
+  .card-btn:hover::after { transform: translateX(4px); }
+
+  /* ── DIETARY COMPASS ── */
+  .dietary-bar {
+    background: var(--gold-pale);
+    padding: 1.5rem 4rem;
+    display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+    border-top: 1px solid rgba(201,168,76,0.3);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+  .dietary-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--sage-dark);
+  }
+  .dietary-filters {
+    display: flex; gap: 0.8rem; flex-wrap: wrap;
+  }
+  .dietary-btn {
+    padding: 0.45rem 1.2rem;
+    border: 1px solid var(--sage);
+    background: transparent; cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--sage-dark);
+    transition: all 0.3s;
+  }
+  .dietary-btn:hover, .dietary-btn.active {
+    background: var(--sage-dark); color: var(--cream);
+    border-color: var(--sage-dark);
+  }
+
+  /* ── CAKE CUSTOMIZER ── */
+  #customizer {
+    background: var(--cream-dark);
+    position: relative; overflow: hidden;
+  }
+  #customizer::after {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 40%; height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C' fill-opacity='0.06'%3E%3Cpath d='M20 20c5.523 0 10-4.477 10-10S25.523 0 20 0 10 4.477 10 10s4.477 10 10 10zm0 20c5.523 0 10-4.477 10-10S25.523 0 20 0 10 4.477 10 10s4.477 10 10 10z'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .customizer-inner { max-width: 900px; margin: 0 auto; }
+  .customizer-steps {
+    display: flex; gap: 0; margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+  .step-tab {
+    flex: 1; padding: 1.2rem;
+    text-align: center; cursor: pointer;
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--text-mid);
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s; position: relative;
+  }
+  .step-tab.active {
+    color: var(--sage-dark);
+    border-bottom-color: var(--gold);
+  }
+  .step-num {
+    display: block; font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: rgba(74,92,78,0.2); margin-bottom: 0.2rem;
+    transition: color 0.3s;
+  }
+  .step-tab.active .step-num { color: var(--gold); }
+  .step-panel { display: none; }
+  .step-panel.active { display: block; }
+  .step-options {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .option-card {
+    padding: 2rem 1.5rem;
+    background: var(--cream);
+    border: 2px solid transparent;
+    cursor: pointer; transition: all 0.3s;
+    text-align: center;
+  }
+  .option-card:hover { border-color: var(--gold-light); }
+  .option-card.selected {
+    border-color: var(--gold);
+    background: var(--gold-pale);
+  }
+  .option-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .option-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--sage-dark); margin-bottom: 0.4rem;
+  }
+  .option-note {
+    font-size: 0.75rem; font-weight: 300;
+    color: var(--text-mid); line-height: 1.5;
+  }
+  .customizer-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 3rem; padding-top: 2rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .summary-pill {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+  }
+  .pill {
+    padding: 0.3rem 0.8rem;
+    background: var(--sage-dark); color: var(--cream);
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em;
+    border-radius: 20px;
+    transition: all 0.3s;
+  }
+  .pill.empty { background: transparent; border: 1px dashed rgba(74,92,78,0.3); color: var(--text-mid); }
+
+  /* ── SOCIAL PROOF ── */
+  #social-proof {
+    background: var(--warm-white);
+  }
+  .ratings-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .rating-big {
+    display: flex; align-items: baseline; gap: 0.5rem;
+  }
+  .rating-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; font-weight: 700; line-height: 1;
+    color: var(--sage-dark);
+  }
+  .rating-max {
+    font-size: 1.5rem; color: var(--text-mid); font-weight: 300;
+  }
+  .stars { color: var(--gold); font-size: 1.4rem; letter-spacing: 0.1em; }
+  .rating-count {
+    font-size: 0.8rem; color: var(--text-mid);
+    margin-top: 0.3rem;
+  }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  }
+  .review-card {
+    padding: 2rem;
+    background: var(--cream);
+    border: 1px solid rgba(201,168,76,0.15);
+    position: relative;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.5s ease;
+  }
+  .review-card.visible { opacity: 1; transform: translateY(0); }
+  .review-card::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; color: rgba(201,168,76,0.15);
+    position: absolute; top: -0.5rem; left: 1rem;
+    line-height: 1;
+  }
+  .review-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.8rem; }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-style: italic; font-weight: 300;
+    line-height: 1.7; color: var(--text-mid); margin-bottom: 1.2rem;
+  }
+  .review-author {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--sage-dark);
+  }
+  .review-product {
+    font-size: 0.68rem; font-weight: 300; color: var(--gold);
+    margin-top: 0.2rem;
+  }
+
+  /* ── INSTAGRAM GRID ── */
+  .instagram-section {
+    background: var(--sage-dark);
+    padding: 4rem;
+    text-align: center;
+  }
+  .instagram-label {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .instagram-handle {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 400; font-style: italic;
+    color: var(--cream); margin-bottom: 2.5rem;
+  }
+  .instagram-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 3px;
+  }
+  .insta-tile {
+    aspect-ratio: 1; overflow: hidden;
+    cursor: pointer; position: relative;
+  }
+  .insta-bg {
+    width: 100%; height: 100%;
+    transition: transform 0.5s ease;
+  }
+  .insta-tile:hover .insta-bg { transform: scale(1.1); }
+  .insta-overlay {
+    position: absolute; inset: 0;
+    background: rgba(74,92,78,0.6);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+    color: var(--cream); font-size: 1.2rem;
+  }
+  .insta-tile:hover .insta-overlay { opacity: 1; }
+
+  /* ── EVENTS B2B ── */
+  #events {
+    background: linear-gradient(135deg, var(--sage-dark) 0%, #1A2B1E 100%);
+    color: var(--cream); position: relative; overflow: hidden;
+  }
+  #events::before {
+    content: '';
+    position: absolute; top: -50%; right: -20%;
+    width: 70%; height: 150%;
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 50%;
+  }
+  .events-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; max-width: 1100px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .event-card-large {
+    padding: 3rem;
+    border: 1px solid rgba(201,168,76,0.25);
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .event-card-large:hover { border-color: var(--gold); }
+  .event-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+  .event-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700; color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .event-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-style: italic; color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+  .event-desc {
+    font-size: 0.88rem; font-weight: 300; line-height: 1.8;
+    color: rgba(255,253,208,0.7); margin-bottom: 2rem;
+  }
+  .event-features {
+    list-style: none; margin-bottom: 2.5rem;
+  }
+  .event-features li {
+    font-size: 0.82rem; font-weight: 300;
+    color: rgba(255,253,208,0.75);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .event-features li::before {
+    content: '✦'; color: var(--gold); font-size: 0.5rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0D1208;
+    padding: 5rem 4rem 2rem;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem; margin-bottom: 4rem;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 0.3rem;
+  }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem; font-style: italic;
+    color: var(--gold-light); letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+  .footer-about {
+    font-size: 0.82rem; font-weight: 300; line-height: 1.8;
+    color: rgba(255,253,208,0.45); max-width: 280px;
+  }
+  .footer-col-title {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.8rem; }
+  .footer-links a {
+    font-size: 0.82rem; font-weight: 300;
+    color: rgba(255,253,208,0.5); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy {
+    font-size: 0.72rem; color: rgba(255,253,208,0.3);
+  }
+  .footer-legal {
+    display: flex; gap: 2rem;
+  }
+  .footer-legal a {
+    font-size: 0.72rem; color: rgba(255,253,208,0.3);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .footer-legal a:hover { color: var(--gold); }
+  .certifications {
+    display: flex; gap: 1rem; margin-top: 1.5rem;
+  }
+  .cert-badge {
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba(201,168,76,0.3);
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,253,208,0.4);
+  }
+
+  /* ── HERITAGE PAGE SECTION ── */
+  #heritage {
+    background: var(--cream);
+    overflow: hidden;
+  }
+  .heritage-panels {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; margin: 4rem -4rem -7rem;
+  }
+  .panel {
+    padding: 5rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .panel-then {
+    background: #2a2218;
+    color: var(--cream);
+  }
+  .panel-now {
+    background: var(--gold-pale);
+    color: var(--sage-dark);
+  }
+  .panel-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.4em;
+    text-transform: uppercase; opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+  .panel-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; font-weight: 700; line-height: 1;
+    margin-bottom: 1.5rem; opacity: 0.15;
+  }
+  .panel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 600; font-style: italic;
+    line-height: 1.2; margin-bottom: 1.2rem;
+  }
+  .panel-text {
+    font-size: 0.88rem; font-weight: 300; line-height: 1.9;
+    opacity: 0.8; max-width: 400px;
+  }
+
+  /* ── MEDIA QUERIES ── */
+  @media (max-width: 1024px) {
+    nav { padding: 1rem 2rem; }
+    nav.scrolled { padding: 0.8rem 2rem; }
+    section { padding: 5rem 2rem; }
+    .legacy-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .collection-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .instagram-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .collection-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .events-grid { grid-template-columns: 1fr; }
+    .step-options { grid-template-columns: 1fr; }
+    .heritage-panels { grid-template-columns: 1fr; margin: 2rem -2rem -5rem; }
+    .daily-batch { flex-direction: column; gap: 1rem; padding: 1.5rem 2rem; }
+    .batch-items { flex-wrap: wrap; gap: 1.5rem; }
+    .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-badge { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  }
+
+  /* ── UTILITIES ── */
+  .text-center { text-align: center; }
+  .text-center .section-lead, .text-center .gold-line { margin-left: auto; margin-right: auto; }
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" aria-label="Dutch Pastry Home">
+    <span class="nav-logo-main">Dutch Pastry</span>
+    <span class="nav-logo-sub">Artisan Bakery · Est. 1896</span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#customizer">Design Your Cake</a></li>
+    <li><a href="#heritage">Our Heritage</a></li>
+    <li><a href="#events">Weddings & Events</a></li>
+    <li><a href="#order" class="nav-cta">Order Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" role="banner">
+  <div class="hero-bg-pattern" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" aria-label="Established 1896, Fourth Generation Artisans">Established 1896 · Fourth Generation Artisans</p>
+    <h1 class="hero-title">
+      The Art of<br>
+      <em>Dutch Pastry</em>
+    </h1>
+    <p class="hero-subtitle">Where Old World craftsmanship meets the precision of a modern patisserie. Small-batch. Lovingly made. Unforgettably good.</p>
+    <div class="hero-actions">
+      <a href="#collection" class="btn-primary">Explore Collection</a>
+      <a href="#customizer" class="btn-outline">Design Your Cake</a>
+    </div>
+  </div>
+  <div class="hero-badge" aria-label="Key statistics">
+    <div class="hero-badge-item">
+      <span class="hero-badge-num">128</span>
+      <span class="hero-badge-label">Years of Craft</span>
+    </div>
+    <div class="hero-badge-sep" aria-hidden="true"></div>
+    <div class="hero-badge-item">
+      <span class="hero-badge-num">4th</span>
+      <span class="hero-badge-label">Generation Family</span>
+    </div>
+    <div class="hero-badge-sep" aria-hidden="true"></div>
+    <div class="hero-badge-item">
+      <span class="hero-badge-num">12+</span>
+      <span class="hero-badge-label">Signature Recipes</span>
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- DAILY BATCH STATUS -->
+<div class="daily-batch" role="status" aria-live="polite" aria-label="Today's fresh batch status">
+  <span class="batch-label">Today's Batch</span>
+  <div class="batch-items">
+    <div class="batch-item">
+      <div class="batch-dot fresh" aria-hidden="true"></div>
+      <span class="batch-name">Bavarian Crème Cake</span>
+      <span class="batch-status fresh">Fresh Now</span>
+    </div>
+    <div class="batch-item">
+      <div class="batch-dot fresh" aria-hidden="true"></div>
+      <span class="batch-name">Apple Vlaai</span>
+      <span class="batch-status fresh">Fresh Now</span>
+    </div>
+    <div class="batch-item">
+      <div class="batch-dot limited" aria-hidden="true"></div>
+      <span class="batch-name">Speculaas Cookies</span>
+      <span class="batch-status limited">Limited — 8 Left</span>
+    </div>
+    <div class="batch-item">
+      <div class="batch-dot sold-out" aria-hidden="true"></div>
+      <span class="batch-name">Mocha Rum Torte</span>
+      <span class="batch-status sold-out">Sold Out</span>
+    </div>
+  </div>
+</div>
+
+<!-- LEGACY TIMELINE -->
+<section id="legacy" aria-labelledby="legacy-heading">
+  <div class="legacy-grid">
+    <div>
+      <span class="section-eyebrow">Our Story</span>
+      <h2 class="section-title" id="legacy-heading">A Century of <em>Craft</em></h2>
+      <div class="gold-line" aria-hidden="true"></div>
+      <p class="section-lead">From a small family kitchen in Rotterdam to a beloved artisan institution — every pastry we make carries the memory of four generations of devotion.</p>
+
+      <div class="timeline" role="list" aria-label="Company history timeline">
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-year">1896</div>
+          <div class="timeline-desc">Gerrit van den Berg opens a small bread shop in Rotterdam, Netherlands. His Speculaas recipe draws queues around the block each winter.</div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-year">1932</div>
+          <div class="timeline-desc">Second generation takes over. Bavarian Crème Cake is introduced — still our most celebrated signature to this day.</div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-year">1968</div>
+          <div class="timeline-desc">The family emigrates, bringing their recipes and traditions to a new home while preserving every Old World technique.</div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-year">2010</div>
+          <div class="timeline-desc">Fourth generation breathes new life into the bakery — introducing seasonal Vlaai and a modern cake customization experience.</div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-year">Today</div>
+          <div class="timeline-desc">Baking every morning at 4am with the same recipes, same care, same love. Some things should never change.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legacy-visual fade-in" aria-label="Heritage bakery visual">
+      <div class="legacy-photo-frame">
+        <div class="legacy-photo" role="img" aria-label="Vintage bakery illustration">
+          <div class="legacy-photo-icon" aria-hidden="true">🏺</div>
+          <p class="legacy-photo-caption">
+            "My grandfather's hands smelled of cinnamon and warm bread — that memory is in every recipe we make."
+          </p>
+        </div>
+      </div>
+      <div class="generation-badge" aria-label="Fourth generation family bakery">
+        <div class="generation-num">4th</div>
+        <div class="generation-label">Generation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIETARY COMPASS -->
+<div class="dietary-bar" role="search" aria-label="Dietary filter options">
+  <span class="dietary-label">Dietary Compass</span>
+  <div class="dietary-filters" role="group" aria-label="Filter by dietary requirement">
+    <button class="dietary-btn active" aria-pressed="true">All Items</button>
+    <button class="dietary-btn" aria-pressed="false">🌾 Gluten-Free</button>
+    <button class="dietary-btn" aria-pressed="false">🌿 Dairy-Free</button>
+    <button class="dietary-btn" aria-pressed="false">🌱 Vegan</button>
+    <button class="dietary-btn" aria-pressed="false">🥜 Nut-Free</button>
+  </div>
+</div>
+
+<!-- SIGNATURE COLLECTION -->
+<section id="collection" aria-labelledby="collection-heading">
+  <div class="text-center" style="max-width:700px;margin:0 auto 0">
+    <span class="section-eyebrow">The Signature Collection</span>
+    <h2 class="section-title" id="collection-heading">Crafted with <em>Devotion</em></h2>
+    <div class="gold-line" aria-hidden="true"></div>
+    <p class="section-lead" style="color:rgba(255,253,208,0.65)">Each recipe passed down through four generations. Each batch made fresh that morning.</p>
+  </div>
+
+  <div class="collection-grid" role="list">
+    <!-- Card 1 -->
+    <div class="collection-card" role="listitem" tabindex="0" aria-label="Bavarian Crème Cake">
+      <div class="card-bg card-bg-1" aria-hidden="true"></div>
+      <div class="card-overlay" aria-hidden="true"></div>
+      <div class="card-texture" aria-hidden="true">🎂</div>
+      <div class="card-content">
+        <span class="card-tag">Since 1932</span>
+        <h3 class="card-name">Bavarian<br>Crème Cake</h3>
+        <p class="card-desc">Layers of moist vanilla sponge, silky Bavarian cream, and a mirror-glaze finish. Available in Mocha, Classic, and Rum.</p>
+        <div class="card-price">From $48</div>
+        <a href="#order" class="card-btn">Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="collection-card" role="listitem" tabindex="0" aria-label="Vlaai Dutch Fruit Tarts">
+      <div class="card-bg card-bg-2" aria-hidden="true"></div>
+      <div class="card-overlay" aria-hidden="true"></div>
+      <div class="card-texture" aria-hidden="true">🥧</div>
+      <div class="card-content">
+        <span class="card-tag">Dutch Tradition</span>
+        <h3 class="card-name">Vlaai<br>Fruit Tarts</h3>
+        <p class="card-desc">A classic Dutch lattice-crust tart, filled with fresh seasonal fruit. Apple, Cherry, Apricot, and Strawberry varieties.</p>
+        <div class="card-price">From $36</div>
+        <a href="#order" class="card-btn">Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="collection-card" role="listitem" tabindex="0" aria-label="Speculaas Cookies">
+      <div class="card-bg card-bg-3" aria-hidden="true"></div>
+      <div class="card-overlay" aria-hidden="true"></div>
+      <div class="card-texture" aria-hidden="true">🍪</div>
+      <div class="card-content">
+        <span class="card-tag">The Original · 1896</span>
+        <h3 class="card-name">Speculaas<br>Cookies</h3>
+        <p class="card-desc">Our founding recipe. Crisp, warmly spiced Dutch windmill cookies pressed with heritage molds — unchanged for 128 years.</p>
+        <div class="card-price">From $18 / box</div>
+        <a href="#order" class="card-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAKE CUSTOMIZER -->
+<section id="customizer" aria-labelledby="customizer-heading">
+  <div class="customizer-inner">
+    <div class="text-center" style="margin-bottom:1rem">
+      <span class="section-eyebrow">Design Studio</span>
+      <h2 class="section-title" id="customizer-heading">Build Your <em>Signature Cake</em></h2>
+      <div class="gold-line" aria-hidden="true"></div>
+      <p class="section-lead" style="margin:0 auto">Three steps to your perfect creation. We bake it fresh to order.</p>
+    </div>
+
+    <div class="customizer-steps" role="tablist" aria-label="Cake customization steps">
+      <div class="step-tab active" role="tab" aria-selected="true" aria-controls="step1" id="tab1" onclick="showStep(1)">
+        <span class="step-num">01</span>
+        Base Flavor
+      </div>
+      <div class="step-tab" role="tab" aria-selected="false" aria-controls="step2" id="tab2" onclick="showStep(2)">
+        <span class="step-num">02</span>
+        Signature Filling
+      </div>
+      <div class="step-tab" role="tab" aria-selected="false" aria-controls="step3" id="tab3" onclick="showStep(3)">
+        <span class="step-num">03</span>
+        Design & Finish
+      </div>
+    </div>
+
+    <div id="step1" class="step-panel active" role="tabpanel" aria-labelledby="tab1">
+      <div class="step-options" role="group" aria-label="Choose base flavor">
+        <div class="option-card selected" role="radio" aria-checked="true" tabindex="0" onclick="selectOption(this,'flavor','Red Velvet')">
+          <div class="option-icon" aria-hidden="true">🔴</div>
+          <div class="option-name">Red Velvet</div>
+          <div class="option-note">Classic crimson sponge with subtle cocoa undertones and a velvety crumb</div>
+        </div>
+        <div class="option-card" role="radio" aria-checked="false" tabindex="0" onclick="selectOption(this,'flavor','Lemon')">
+          <div class="option-icon" aria-hidden="true">🍋</div>
+          <div class="option-name">Lemon</div>
+          <div class="option-note">Bright, zesty citrus sponge with elderflower notes and natural lemon zest</div>
+        </div>
+        <div class="option-card" role="radio" aria-checked="false" tabindex="0" onclick="selectOption(this,'flavor','Chocolate')">
+          <div class="option-icon" aria-hidden="true">🍫</div>
+          <div class="option-name">Dark Chocolate</div>
+          <div class="option-note">Rich Belgian dark chocolate sponge with a deep, bittersweet character</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="step2" class="step-panel" role="tabpanel" aria-labelledby="tab2">
+      <div class="step-options" role="group" aria-label="Choose filling">
+        <div class="option-card selected" role="radio" aria-checked="true" tabindex="0" onclick="selectOption(this,'filling','Bavarian Mocha')">
+          <div class="option-icon" aria-hidden="true">☕</div>
+          <div class="option-name">Bavarian Mocha</div>
+          <div class="option-note">Our 1932 signature — silky espresso-infused Bavarian cream with coffee bean essence</div>
+        </div>
+        <div class="option-card" role="radio" aria-checked="false" tabindex="0" onclick="selectOption(this,'filling','Dark Rum')">
+          <div class="option-icon" aria-hidden="true">🥃</div>
+          <div class="option-name">Dark Rum</div>
+          <div class="option-note">Aged rum-soaked cream with vanilla bean and a gentle warming finish</div>
+        </div>
+        <div class="option-card" role="radio" aria-checked="false" tabindex="0" onclick="selectOption(this,'filling','Raspberry')">
+          <div class="option-icon" aria-hidden="true">🫐</div>
+          <div class="option-name">Raspberry</div>
+          <div class="option-note">Fresh raspberry compote and mascarpone cream — bright, tangy, beautifully balanced</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="step3" class="step-panel" role="tabpanel" aria-labelledby="tab3">
+      <div class="step-options" role="group" aria-label="Choose design finish">
+        <div class="option-card selected" role="radio" aria-checked="true" tabindex="0" onclick="selectOption(this,'finish','Smooth Glaze')">
+          <div class="option-icon" aria-hidden="true">✨</div>
+          <div class="option-name">Smooth Glaze</div>
+          <div class="option-note">Mirror-perfect fondant finish in your chosen palette — elegant and refined</div>
+        </div>
+        <div class="option-card" role="radio" aria-checked="false" tabindex="0" onclick="selectOption(this,'finish','Textured Cream')">
+          <div class="option-icon" aria-hidden="true">🌊</div>
+          <div class="option-name">Textured Cream</div>
+          <div class="option-note">Hand-applied palette knife textures — rustic, artisanal, and uniquely yours</div>
+        </div>
+        <div class="option-card" role="radio" aria-checked="false" tabindex="0" onclick="selectOption(this,'finish','Edible Image')">
+          <div class="option-icon" aria-hidden="true">🖼️</div>
+          <div class="option-name">Edible Image</div>
+          <div class="option-note">Upload your photo or artwork — printed in edible ink on premium sugar paper</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="customizer-nav">
+      <div class="summary-pill" aria-label="Your cake selections" role="status">
+        <span class="pill" id="pill-flavor">Red Velvet</span>
+        <span class="pill empty" id="pill-filling">Choose Filling →</span>
+        <span class="pill empty" id="pill-finish">Choose Finish →</span>
+      </div>
+      <div style="display:flex;gap:1rem">
+        <button class="btn-outline" onclick="prevStep()" style="padding:0.8rem 1.8rem;border-color:var(--sage);color:var(--sage-dark)">← Back</button>
+        <button class="btn-primary" id="nextBtn" onclick="nextStep()" style="padding:0.8rem 1.8rem">Next Step →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE: THEN VS NOW -->
+<section id="heritage" aria-labelledby="heritage-heading">
+  <div class="text-center" style="max-width:600px;margin:0 auto">
+    <span class="section-eyebrow">The Heritage Page</span>
+    <h2 class="section-title" id="heritage-heading">Then &amp; <em>Now</em></h2>
+    <div class="gold-line" aria-hidden="true"></div>
+    <p class="section-lead" style="margin:0 auto">The faces change. The craft does not.</p>
+  </div>
+
+  <div class="heritage-panels" aria-label="Historical comparison of the bakery">
+    <div class="panel panel-then">
+      <div class="panel-label">Then</div>
+      <div class="panel-year" aria-hidden="true">1896</div>
+      <h3 class="panel-title">Stone ovens and morning light</h3>
+      <p class="panel-text">Gerrit rose at 3am, stoked the wood-fired oven, and shaped every loaf by hand. The shop opened at 6am. It sold out by 9.</p>
+    </div>
+    <div class="panel panel-now">
+      <div class="panel-label">Now</div>
+      <div class="panel-year" aria-hidden="true">2024</div>
+      <h3 class="panel-title">Same 4am start, different world</h3>
+      <p class="panel-text">We still begin before dawn. The ovens are modern but the hands are guided by the same instinct passed down through four generations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="social-proof" aria-labelledby="reviews-heading">
+  <div class="ratings-header">
+    <div>
+      <span class="section-eyebrow">Community Favorites</span>
+      <h2 class="section-title" id="reviews-heading">What Our <em>Community</em> Says</h2>
+    </div>
+    <div>
+      <div class="rating-big" aria-label="Rating: 4.9 out of 5">
+        <span class="rating-number">4.9</span>
+        <span class="rating-max">/5</span>
+      </div>
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <div class="rating-count">Based on 847 verified orders</div>
+    </div>
+  </div>
+
+  <div class="reviews-grid" aria-label="Customer reviews">
+    <div class="review-card fade-in" role="article">
+      <div class="review-stars" aria-label="5 star rating" role="img">★★★★★</div>
+      <p class="review-text">"The Bavarian Crème Cake brought my Dutch grandmother to tears — she said it tasted exactly like the ones from her childhood in Limburg."</p>
+      <div class="review-author">Marjolein V.</div>
+      <div class="review-product">Bavarian Crème Cake, Mocha</div>
+    </div>
+    <div class="review-card fade-in" role="article" style="transition-delay:0.1s">
+      <div class="review-stars" aria-label="5 star rating" role="img">★★★★★</div>
+      <p class="review-text">"Ordered three Vlaais for our family reunion. Every single one was gone within twenty minutes. The apple filling is extraordinary."</p>
+      <div class="review-author">Thomas H.</div>
+      <div class="review-product">Apple Vlaai, Family Size</div>
+    </div>
+    <div class="review-card fade-in" role="article" style="transition-delay:0.2s">
+      <div class="review-stars" aria-label="5 star rating" role="img">★★★★★</div>
+      <p class="review-text">"The custom wedding cake exceeded every expectation. The team was meticulous and our guests are still talking about it six months later."</p>
+      <div class="review-author">Sarah & Michael K.</div>
+      <div class="review-product">Custom Wedding Cake</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM SECTION -->
+<div class="instagram-section" aria-label="Instagram gallery">
+  <div class="instagram-label">Follow Along</div>
+  <div class="instagram-handle">@dutchpastry</div>
+  <div class="instagram-grid" role="list" aria-label="Instagram photos">
+    <div class="insta-tile" role="listitem">
+      <div class="insta-bg" style="background:linear-gradient(135deg,#5a3a1a,#8B5E35)" aria-label="Speculaas cookies photo"></div>
+      <div class="insta-overlay" aria-hidden="true">♥</div>
+    </div>
+    <div class="insta-tile" role="listitem">
+      <div class="insta-bg" style="background:linear-gradient(135deg,#2d4a2d,#4A7C50)" aria-label="Apple vlaai photo"></div>
+      <div class="insta-overlay" aria-hidden="true">♥</div>
+    </div>
+    <div class="insta-tile" role="listitem">
+      <div class="insta-bg" style="background:linear-gradient(135deg,#4a2d1a,#7A4530)" aria-label="Bavarian cake photo"></div>
+      <div class="insta-overlay" aria-hidden="true">♥</div>
+    </div>
+    <div class="insta-tile" role="listitem">
+      <div class="insta-bg" style="background:linear-gradient(135deg,#1a2d3a,#2A4560)" aria-label="Bakery interior photo"></div>
+      <div class="insta-overlay" aria-hidden="true">♥</div>
+    </div>
+    <div class="insta-tile" role="listitem">
+      <div class="insta-bg" style="background:linear-gradient(135deg,#3a2d1a,#6A5030)" aria-label="Morning baking photo"></div>
+      <div class="insta-overlay" aria-hidden="true">♥</div>
+    </div>
+    <div class="insta-tile" role="listitem">
+      <div class="insta-bg" style="background:linear-gradient(135deg,#2a1a0d,#5A3520)" aria-label="Custom cake photo"></div>
+      <div class="insta-overlay" aria-hidden="true">♥</div>
+    </div>
+  </div>
+</div>
+
+<!-- EVENTS / B2B -->
+<section id="events" aria-labelledby="events-heading">
+  <div style="text-align:center;margin-bottom:4rem">
+    <span class="section-eyebrow" style="color:var(--gold-light)">For Special Occasions</span>
+    <h2 class="section-title" style="color:var(--cream)" id="events-heading">Weddings &amp; <em>Wholesale</em></h2>
+    <div class="gold-line" style="margin:1rem auto"></div>
+    <p class="section-lead" style="color:rgba(255,253,208,0.6);margin:0 auto">Your most important moments deserve pastry crafted with intention.</p>
+  </div>
+
+  <div class="events-grid">
+    <div class="event-card-large fade-in">
+      <div class="event-icon" aria-hidden="true">💍</div>
+      <h3 class="event-title">Wedding Cakes</h3>
+      <p class="event-sub">A personal consultation, start to finish</p>
+      <p class="event-desc">We design your wedding cake with the same care we put into our daily bakes — times a thousand. Every tier, flavor, and detail is yours to shape.</p>
+      <ul class="event-features" aria-label="Wedding cake service features">
+        <li>Complimentary tasting session for 4</li>
+        <li>1-on-1 consultation with our Head Pâtissier</li>
+        <li>Fully custom design and flavor profile</li>
+        <li>Delivery and on-site setup available</li>
+      </ul>
+      <a href="mailto:weddings@dutchpastry.com" class="btn-primary" aria-label="Enquire about wedding cake consultation">Begin Your Consultation</a>
+    </div>
+
+    <div class="event-card-large fade-in" style="transition-delay:0.15s">
+      <div class="event-icon" aria-hidden="true">🏢</div>
+      <h3 class="event-title">Wholesale & B2B</h3>
+      <p class="event-sub">Supplying restaurants, cafés & corporate clients</p>
+      <p class="event-desc">From weekly bread deliveries to event catering for 500 — we have a wholesale program built for businesses that take quality seriously.</p>
+      <ul class="event-features" aria-label="Wholesale service features">
+        <li>Minimum orders from just 12 units</li>
+        <li>Weekly standing order discounts</li>
+        <li>Custom packaging and white-label options</li>
+        <li>HACCP certified, full allergen documentation</li>
+      </ul>
+      <a href="mailto:wholesale@dutchpastry.com" class="btn-primary" aria-label="Enquire about wholesale bread partnership">Wholesale Enquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Dutch Pastry</div>
+      <div class="footer-tagline">Artisan Bakery · Est. 1896</div>
+      <p class="footer-about">Fourth-generation family bakery. Small-batch, handcrafted, and deeply rooted in Dutch tradition. We bake every morning at 4am because the world deserves better pastry.</p>
+      <div class="certifications" aria-label="Our certifications">
+        <span class="cert-badge">Gluten-Free Certified</span>
+        <span class="cert-badge">HACCP Certified</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Visit</div>
+      <ul class="footer-links" aria-label="Navigation links">
+        <li><a href="#collection">Signature Collection</a></li>
+        <li><a href="#customizer">Design Your Cake</a></li>
+        <li><a href="#heritage">Our Heritage</a></li>
+        <li><a href="#events">Weddings & Events</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Order</div>
+      <ul class="footer-links" aria-label="Order options">
+        <li><a href="#order">Order Online</a></li>
+        <li><a href="#order">Local Pickup</a></li>
+        <li><a href="#order">Same-Day Delivery</a></li>
+        <li><a href="#order">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links" aria-label="Contact information">
+        <li><a href="tel:+1234567890">Call Us</a></li>
+        <li><a href="mailto:hello@dutchpastry.com">Email Us</a></li>
+        <li><a href="https://instagram.com/dutchpastry" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2024 Dutch Pastry Artisan Bakery. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── DIETARY FILTER BUTTONS ──
+  document.querySelectorAll('.dietary-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.dietary-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      this.classList.add('active');
+      this.setAttribute('aria-pressed', 'true');
+    });
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+    });
+  });
+
+  // ── CAKE CUSTOMIZER ──
+  let currentStep = 1;
+  const selections = { flavor: 'Red Velvet', filling: null, finish: null };
+
+  function showStep(step) {
+    currentStep = step;
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.step-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.getElementById('step' + step).classList.add('active');
+    document.getElementById('tab' + step).classList.add('active');
+    document.getElementById('tab' + step).setAttribute('aria-selected', 'true');
+    const btn = document.getElementById('nextBtn');
+    btn.textContent = step === 3 ? 'Add to Order →' : 'Next Step →';
+  }
+
+  function nextStep() {
+    if (currentStep < 3) showStep(currentStep + 1);
+    else {
+      if (selections.flavor && selections.filling && selections.finish) {
+        alert('🎂 Your custom cake has been added to your order!\n\n' +
+          'Base: ' + selections.flavor + '\n' +
+          'Filling: ' + selections.filling + '\n' +
+          'Finish: ' + selections.finish + '\n\nWe\'ll confirm your order shortly!');
+      } else {
+        alert('Please complete all three steps to customize your cake.');
+      }
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 1) showStep(currentStep - 1);
+  }
+
+  function selectOption(el, type, value) {
+    el.closest('.step-options').querySelectorAll('.option-card').forEach(c => {
+      c.classList.remove('selected');
+      c.setAttribute('aria-checked', 'false');
+    });
+    el.classList.add('selected');
+    el.setAttribute('aria-checked', 'true');
+    selections[type] = value;
+    updatePills();
+  }
+
+  // keyboard support for option cards
+  document.querySelectorAll('.option-card').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+
+  function updatePills() {
+    const fp = document.getElementById('pill-flavor');
+    const fip = document.getElementById('pill-filling');
+    const fnp = document.getElementById('pill-finish');
+    if (selections.flavor) { fp.textContent = selections.flavor; fp.classList.remove('empty'); }
+    if (selections.filling) { fip.textContent = selections.filling; fip.classList.remove('empty'); }
+    else { fip.textContent = 'Choose Filling →'; fip.classList.add('empty'); }
+    if (selections.finish) { fnp.textContent = selections.finish; fnp.classList.remove('empty'); }
+    else { fnp.textContent = 'Choose Finish →'; fnp.classList.add('empty'); }
+  }
+
+  // ── INTERSECTION OBSERVER FOR ANIMATIONS ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in, .timeline-item, .review-card').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Stagger timeline items
+  document.querySelectorAll('.timeline-item').forEach((item, i) => {
+    item.style.transitionDelay = (i * 0.12) + 's';
+  });
+
+  // Stagger review cards
+  document.querySelectorAll('.review-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.1) + 's';
+  });
+</script>
+</body>
+</html>
